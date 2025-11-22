@@ -37,23 +37,23 @@ export const Auth: React.FC<AuthProps> = ({ onLogin }) => {
                     <div className="grid grid-cols-2 gap-4">
                          <div>
                             <label className="block text-xs font-medium text-gray-700 mb-1 ml-1">Prénom</label>
-                            <input type="text" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-ikonga-orange focus:ring-1 focus:ring-ikonga-orange outline-none transition-colors" required />
+                            <input type="text" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-ikonga-orange focus:ring-1 focus:ring-ikonga-orange outline-none transition-colors text-gray-900" required />
                          </div>
                          <div>
                             <label className="block text-xs font-medium text-gray-700 mb-1 ml-1">Nom</label>
-                            <input type="text" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-ikonga-orange focus:ring-1 focus:ring-ikonga-orange outline-none transition-colors" required />
+                            <input type="text" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-ikonga-orange focus:ring-1 focus:ring-ikonga-orange outline-none transition-colors text-gray-900" required />
                          </div>
                     </div>
                 )}
 
                 <div>
                     <label className="block text-xs font-medium text-gray-700 mb-1 ml-1">Email</label>
-                    <input type="email" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-ikonga-orange focus:ring-1 focus:ring-ikonga-orange outline-none transition-colors" placeholder="votre@email.com" required />
+                    <input type="email" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-ikonga-orange focus:ring-1 focus:ring-ikonga-orange outline-none transition-colors text-gray-900" placeholder="votre@email.com" required />
                 </div>
 
                 <div>
                     <label className="block text-xs font-medium text-gray-700 mb-1 ml-1">Mot de passe</label>
-                    <input type="password" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-ikonga-orange focus:ring-1 focus:ring-ikonga-orange outline-none transition-colors" placeholder="••••••••" required />
+                    <input type="password" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-ikonga-orange focus:ring-1 focus:ring-ikonga-orange outline-none transition-colors text-gray-900" placeholder="••••••••" required />
                 </div>
 
                 {isLogin && (

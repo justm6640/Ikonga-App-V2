@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import { MOCK_WEIGHT_HISTORY, MOCK_USER } from '../constants';
-import { LineChart as LineChartIcon, Plus, AlertCircle } from 'lucide-react';
+import { LineChart as LineChartIcon, Plus, AlertCircle, Target } from 'lucide-react';
 
 export const Progress: React.FC = () => {
   const [history, setHistory] = useState(MOCK_WEIGHT_HISTORY);
@@ -20,7 +20,12 @@ export const Progress: React.FC = () => {
 
   const currentWeight = history[history.length - 1].weight;
   const startWeight = history[0].weight;
+  const targetWeight = MOCK_USER.targetWeight;
+  
   const diff = (startWeight - currentWeight).toFixed(1);
+  const totalToLose = startWeight - targetWeight;
+  const lostSoFar = startWeight - currentWeight;
+  const percentage = totalToLose > 0 ? Math.min(100, Math.max(0, (lostSoFar / totalToLose) * 100)) : 0;
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -100,15 +105,44 @@ export const Progress: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-white p-4 rounded-xl border border-gray-100 flex justify-between items-center">
                 <span className="text-gray-500">Poids de départ</span>
-                <span className="font-bold text-gray-800">{MOCK_USER.startWeight} kg</span>
+                <span className="font-bold text-gray-800">{startWeight} kg</span>
             </div>
             <div className="bg-white p-4 rounded-xl border border-gray-100 flex justify-between items-center">
                 <span className="text-gray-500">PISI (Objectif)</span>
-                <span className="font-bold text-ikonga-orange">{MOCK_USER.targetWeight} kg</span>
+                <span className="font-bold text-ikonga-orange">{targetWeight} kg</span>
             </div>
             <div className="bg-white p-4 rounded-xl border border-gray-100 flex justify-between items-center">
                 <span className="text-gray-500">Perte Totale</span>
                 <span className="font-bold text-green-500">-{diff} kg</span>
+            </div>
+        </div>
+
+        {/* Progress Bar Section */}
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <div className="flex items-center justify-between mb-4">
+                 <div className="flex items-center">
+                    <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-ikonga-orange mr-3">
+                        <Target size={20} />
+                    </div>
+                    <div>
+                        <h3 className="font-bold text-gray-800">Progression vers PISI</h3>
+                        <p className="text-xs text-gray-500">Objectif : {targetWeight} kg</p>
+                    </div>
+                 </div>
+                 <span className="text-2xl font-bold text-ikonga-orange">{percentage.toFixed(0)}%</span>
+            </div>
+            <div className="w-full bg-gray-100 rounded-full h-4 mb-2 overflow-hidden">
+                 <div 
+                    className="bg-gradient-to-r from-ikonga-orange to-ikonga-rose h-full rounded-full transition-all duration-1000 ease-out relative"
+                    style={{ width: `${percentage}%` }}
+                 >
+                    <div className="absolute inset-0 bg-white opacity-20 animate-pulse"></div>
+                 </div>
+            </div>
+             <div className="flex justify-between text-xs font-medium text-gray-400">
+                <span>{startWeight} kg</span>
+                <span>Reste à perdre : {(currentWeight - targetWeight).toFixed(1)} kg</span>
+                <span>{targetWeight} kg</span>
             </div>
         </div>
     </div>
