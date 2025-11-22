@@ -74,7 +74,7 @@ export const Progress: React.FC = () => {
                                 value={newWeight}
                                 onChange={(e) => setNewWeight(e.target.value)}
                                 placeholder="Ex: 72.5"
-                                className="w-full p-3 bg-gray-50 rounded-xl border border-gray-200 focus:border-ikonga-orange focus:ring-2 focus:ring-orange-100 outline-none transition-all"
+                                className="w-full p-3 bg-gray-50 rounded-xl border border-gray-200 focus:border-ikonga-orange focus:ring-2 focus:ring-orange-100 outline-none transition-all text-gray-900"
                             />
                         </div>
                         <button 
